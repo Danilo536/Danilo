@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wahrsagerei und Vorhersagen</title>
+    <style>
+        body {
+            font-family: 'Georgia', serif;
+            background: #2e2e2e;
+            color: #ffffff;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            max-width: 800px;
+            margin: auto;
+        }
+        h1 {
+            color: #f1c40f;
+        }
+        .prediction {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .prediction div {
+            margin: 10px;
+            padding: 20px;
+            background-color: #333;
+            border: 1px solid #555;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .prediction div:hover {
+            background-color: #444;
+        }
+        .hidden-message, .category-message {
+            display: none;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #444;
+            border: 1px solid #555;
+            border-radius: 10px;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #bbb;
+        }
+    </style>
+    <script>
+        function showMessage(type) {
+            const messages = document.querySelectorAll('.category-message, .hidden-message');
+            messages.forEach(message => message.style.display = 'none');
+            if (type === 'love') {
+                document.getElementById('hidden-message').style.display = 'block';
+            } else {
+                document.getElementById(type).style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Wahrsagerei und Vorhersagen</h1>
+        <p>Willkommen bei deiner täglichen Wahrsagerei! Klicke auf ein Ereignis, um deine persönliche Vorhersage zu sehen.</p>
+        <div class="prediction">
+            <div onclick="showMessage('career')">Karriere</div>
+            <div onclick="showMessage('health')">Gesundheit</div>
+            <div onclick="showMessage('travel')">Reise</div>
+            <div onclick="showMessage('love')">Liebe</div>
+        </div>
+        <div id="career" class="category-message">
+            <h2>Karriere Vorhersage:</h2>
+            <p>Du wirst bald eine bedeutende Gelegenheit erhalten, die deinen Karriereweg erheblich beeinflussen könnte. Nutze diese Chance, um dich weiterzuentwickeln und deine Ziele zu erreichen.</p>
+        </div>
+        <div id="health" class="category-message">
+            <h2>Gesundheit Vorhersage:</h2>
+            <p>Deine Gesundheit wird sich in naher Zukunft verbessern. Achte darauf, genügend Ruhe und eine ausgewogene Ernährung in deinen Alltag zu integrieren.</p>
+        </div>
+        <div id="travel" class="category-message">
+            <h2>Reise Vorhersage:</h2>
+            <p>Eine aufregende Reise steht dir bevor, die dir neue Perspektiven und wertvolle Erfahrungen bringen wird. Sei offen für das Unbekannte und genieße die Abenteuer.</p>
+        </div>
+        <div id="hidden-message" class="hidden-message">
+            <h2>Deine besondere Botschaft:</h2>
+            <p>
+                Liebe [Name],<br><br>
+                In den letzten Wochen durfte ich dich noch näher kennenlernen und meine Gefühle für dich sind stärker geworden. Du bist jemand ganz Besonderes für mich. Ich verstehe, dass du jetzt in der Oberstufe bist und jede Menge Stress hast. Der neue Abschnitt in deinem Leben bringt viele Herausforderungen mit sich, und ich möchte dir sagen, dass ich immer für dich da bin, um dir Halt zu geben.
+            </p>
+            <p>
+                Vielleicht könnten wir uns in eine Art Zwischenebene zwischen Freundschaft und Beziehung begeben, da ich weiß, dass eine richtige Beziehung für dich momentan zu stressig ist. Egal wie stressig es wird, ich stehe an deiner Seite. Lass uns gemeinsam diesen Weg gehen, Schritt für Schritt.
+            </p>
+            <p class="footer">
+                Mit ganz viel Liebe,<br>
+                [Dein Name]
+            </p>
+        </div>
+    </div>
+</body>
+</html>
