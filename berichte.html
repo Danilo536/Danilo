@@ -3,35 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reiseberichte</title>
+    <title>Meine Reise-Abenteuer</title>
     <style>
-        body {
-            font-family: 'Arial', sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background: #f9f9f9;
-            color: #333;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
+            box-sizing: border-box;
         }
 
+        html, body {
+            font-family: 'Arial', sans-serif;
+            height: 100%;
+            background: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Header */
         header {
             background: #4CAF50;
             color: white;
-            padding: 1rem 0;
-            text-align: center;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
+        /* Hamburger Icon */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 25px;
+        }
+
+        .hamburger div {
+            background-color: white;
+            height: 4px;
+            width: 100%;
+        }
+
+        /* Navigation */
         nav ul {
             list-style: none;
             margin: 0;
             padding: 0;
-            text-align: center;
+            display: flex;
         }
 
         nav ul li {
-            display: inline;
             margin: 0 20px;
         }
 
@@ -44,7 +72,6 @@
         /* Dropdown Menü */
         .dropdown {
             position: relative;
-            display: inline-block;
         }
 
         .dropbtn {
@@ -61,7 +88,6 @@
             position: absolute;
             background-color: #f9f9f9;
             min-width: 160px;
-            z-index: 1;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             border-radius: 5px;
             top: 100%;
@@ -83,57 +109,132 @@
             display: block;
         }
 
-        .bericht {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .bericht h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .bericht p {
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        footer {
-            background-color: #333;
+        /* Hero Section */
+        .hero {
+            background: url('hero.jpg') no-repeat center center/cover;
+            height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
             color: white;
-            padding: 1rem;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .hero-content {
+            z-index: 1;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            max-width: 600px;
+            margin: 0 auto;
             text-align: center;
         }
 
-        /* Responsive für kleine Bildschirme */
+        .hero-content h1 {
+            font-size: 2.5rem;
+            color: #4CAF50;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin: 20px 0;
+        }
+
+        .hero-content a {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        /* Features */
+        .features {
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            background: #fff;
+            text-align: center;
+        }
+
+        .features .feature {
+            margin: 0 20px;
+            flex: 1;
+        }
+
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem;
+            margin-top: auto;
+        }
+
+        /* Mobile View */
         @media (max-width: 768px) {
             nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: left;
                 padding: 0;
             }
 
             nav ul li {
-                display: block;
                 margin: 10px 0;
             }
 
-            .bericht h1 {
-                font-size: 1.8rem;
+            nav ul li a {
+                padding: 10px;
+                background-color: #4CAF50;
+                color: white;
+                text-align: left;
             }
 
-            .bericht p {
+            .hamburger {
+                display: flex;
+            }
+
+            .menu-active {
+                display: block;
+            }
+
+            .hero {
+                height: 50vh;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
                 font-size: 1rem;
             }
         }
+
     </style>
 </head>
 <body>
     <header>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <nav>
-            <ul>
+            <ul id="menu">
                 <li><a href="index.html">Start</a></li>
                 <li><a href="berichte.html">Berichte</a></li>
                 <li><a href="galerie.html">Galerie</a></li>
@@ -149,13 +250,39 @@
         </nav>
     </header>
 
-    <div class="bericht">
-        <h1>Meine Reise durch die Alpen</h1>
-        <p>Es war eine unvergessliche Reise durch die Alpen, bei der ich nicht nur atemberaubende Ausblicke genießen konnte, sondern auch neue Kulturen entdeckte. Die Natur war wirklich überwältigend...</p>
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Willkommen bei meinen Reiseabenteuern</h1>
+            <p>Begleite mich auf meinen Entdeckungsreisen um die Welt – voller spannender Geschichten und inspirierender Momente.</p>
+            <a href="berichte.html">Erfahre mehr</a>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <h2>Reiseberichte</h2>
+            <p>Entdecke meine detaillierten Reiseberichte, in denen ich Erlebnisse, Tipps und unvergessliche Abenteuer teile.</p>
+        </div>
+        <div class="feature">
+            <h2>Galerie</h2>
+            <p>Stöbere durch meine Galerie mit den schönsten Momenten aus aller Welt, festgehalten in atemberaubenden Bildern.</p>
+        </div>
+        <div class="feature">
+            <h2>Inspiration</h2>
+            <p>Hole dir Inspiration für deine eigene Reise, entdecke versteckte Orte und lerne neue Kulturen kennen.</p>
+        </div>
     </div>
 
     <footer>
         &copy; 2025 Reiseabenteuer
     </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.classList.toggle('menu-active');
+        }
+    </script>
 </body>
 </html>
