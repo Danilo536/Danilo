@@ -32,6 +32,7 @@
             text-align: center;
         }
 
+        /* Navigation */
         nav ul {
             list-style: none;
             margin: 0;
@@ -48,6 +49,63 @@
             color: white;
             text-decoration: none;
             font-size: 1.2rem;
+        }
+
+        /* Mobile Dropdown */
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            padding: 10px;
+            font-size: 1.2rem;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            width: 100%;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        .dropdown-menu {
+            display: none;
+            flex-direction: column;
+            width: 100%;
+            text-align: left;
+        }
+
+        .dropdown-menu li {
+            display: block;
+            padding: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                display: none;
+                width: 100%;
+            }
+
+            nav ul li {
+                width: 100%;
+                text-align: left;
+            }
+
+            .dropdown-menu {
+                display: flex;
+            }
+
+            nav.active ul {
+                display: flex;
+            }
         }
 
         /* Hero-Bereich */
@@ -144,8 +202,9 @@
 </head>
 <body>
     <header>
+        <button class="menu-toggle" onclick="toggleMenu()">Menü</button>
         <nav>
-            <ul>
+            <ul class="dropdown-menu">
                 <li><a href="index.html">Start</a></li>
                 <li><a href="berichte.html">Berichte</a></li>
                 <li><a href="galerie.html">Galerie</a></li>
@@ -180,5 +239,11 @@
     <footer>
         &copy; 2025 Reiseabenteuer
     </footer>
+
+    <script>
+        function toggleMenu() {
+            document.querySelector('nav').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
