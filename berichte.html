@@ -41,107 +41,118 @@
             font-size: 1.2rem;
         }
 
-        .bericht {
-            max-width: 800px;
-            margin: 30px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        /* Dropdown Menü */
+        .dropdown {
+            position: relative;
+            display: inline-block;
         }
 
-        .bericht h2 {
-            color: #4CAF50;
+        .dropbtn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            z-index: 1;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            top: 100%;
+            left: 0;
+        }
+
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .bericht {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .bericht h1 {
+            font-size: 2rem;
             margin-bottom: 10px;
         }
 
         .bericht p {
+            font-size: 1.1rem;
             line-height: 1.6;
-            margin-bottom: 20px;
         }
 
         footer {
-            text-align: center;
-            background: #333;
+            background-color: #333;
             color: white;
             padding: 1rem;
-            margin-top: auto;
+            text-align: center;
+        }
+
+        /* Responsive für kleine Bildschirme */
+        @media (max-width: 768px) {
+            nav ul {
+                padding: 0;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .bericht h1 {
+                font-size: 1.8rem;
+            }
+
+            .bericht p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Reiseberichte</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Start</a></li>
                 <li><a href="berichte.html">Berichte</a></li>
                 <li><a href="galerie.html">Galerie</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Mehr</a>
+                    <div class="dropdown-content">
+                        <a href="#">Über mich</a>
+                        <a href="#">Kontakt</a>
+                        <a href="#">Blog</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
 
-<div class="bericht" style="position: relative;">
-    <h2>Paris: Die Stadt der Liebe</h2>
-        <p>Paris, die Stadt der Liebe, fasziniert mit einer Mischung aus Geschichte, Kunst und atemberaubenden Ausblicken. Während unseres Aufenthalts in dieser wunderschönen Metropole konnten wir einige der bekanntesten Sehenswürdigkeiten erleben, die uns nachhaltig beeindruckt haben.</p>
-
-    <div class="more-text" style="display: none;">
-            <p>Ein unvergessliches Erlebnis war der Besuch des Louvre, einem der größten und bekanntesten Museen der Welt. Schon beim Betreten des imposanten Gebäudes fühlt man sich von der Geschichte und Kunst vergangener Epochen umgeben. Die Sammlung reicht von der „Mona Lisa“ bis zu antiken Skulpturen, die den Besuch zu einer wahren Entdeckungsreise machen. Der Louvre ist nicht nur ein Museum, sondern ein Ort, an dem Kunstgeschichte lebendig wird.</p>
-            <p>Im Anschluss führte uns unser Weg nach Montmartre, einem der malerischsten Viertel von Paris. Die engen Gassen und die Atmosphäre dieses Künstlerviertels sind einzigartig. Der Place du Tertre, wo Straßenkünstler ihre Werke ausstellen, lässt einen in die künstlerische Geschichte der Stadt eintauchen. Von der Basilika Sacré-Cœur aus hat man einen fantastischen Blick auf ganz Paris – ein Moment, den man sich nicht entgehen lassen sollte. Montmartre ist der perfekte Ort, um sich von der kreativen Energie der Stadt verzaubern zu lassen.</p>
-            <p>Den krönenden Abschluss unserer Reise bildete der Eiffelturm, der bei Nacht ein wahres Spektakel bietet. Sobald die Dämmerung einsetzt, erstrahlt der Turm in tausenden von Lichtern und wird zu einem funkelnden Wahrzeichen. Besonders beeindruckend ist der Moment, wenn der Turm in seiner vollen Pracht erleuchtet ist und die Stadt zu Füßen liegt. Der Eiffelturm bei Nacht ist eine der schönsten Sehenswürdigkeiten, die man in Paris erleben kann.</p>
-            <p>Zusammengefasst lässt sich sagen, dass Paris mit seinen einzigartigen Highlights ein unvergessliches Erlebnis bietet. Der Louvre, Montmartre und der Eiffelturm sind nur einige der vielen Sehenswürdigkeiten, die diese Stadt so besonders machen. Ein Besuch in Paris ist eine Reise durch die Kunstgeschichte, gepaart mit faszinierenden Ausblicken und einer Atmosphäre, die man einfach erleben muss.</p>
+    <div class="bericht">
+        <h1>Meine Reise durch die Alpen</h1>
+        <p>Es war eine unvergessliche Reise durch die Alpen, bei der ich nicht nur atemberaubende Ausblicke genießen konnte, sondern auch neue Kulturen entdeckte. Die Natur war wirklich überwältigend...</p>
     </div>
-
-    <button onclick="toggleText(this)" style="background-color: #4CAF50; color: white; padding: 6px 15px; font-size: 0.9rem; border: none; border-radius: 5px; cursor: pointer; position: absolute; bottom: 10px; left: 10px; margin-top: 20px;">Mehr lesen</button>
-</div>
-
-    
-<script>
-    function toggleText(button) {
-        var moreText = button.previousElementSibling;  // Das .more-text-Element vor dem Button
-        if (moreText.style.display === "none" || moreText.style.display === "") {
-            moreText.style.display = "block";
-            button.textContent = "Weniger lesen";
-        } else {
-            moreText.style.display = "none";
-            button.textContent = "Mehr lesen";
-        }
-    }
-</script>
-
-    
-    
-    
-
-<div class="bericht" style="position: relative;">
-    <h2>Norwegen: Naturwunder und kulinarische Genüsse</h2>
-    <p>Norwegen ist bekannt für seine atemberaubende Natur, und der Geirangerfjord gehört ohne Zweifel zu den eindrucksvollsten Naturschönheiten des Landes. Der Fjord, der zum UNESCO-Weltkulturerbe gehört, erstreckt sich über 15 Kilometer in die Berge und bietet eine Landschaft, die fast surreal erscheint. Umgeben von steilen Felsen und tiefgrünen Tälern, glitzert das smaragdgrüne Wasser im Sonnenlicht.</p>
-
-    <div class="more-text" style="display: none;">
- <p>Besonders bekannt sind die spektakulären Wasserfälle, die den Geirangerfjord zieren. Der „Sieben-Schwestern-Wasserfall“ stürzt mit seinen sieben Wasserströmen direkt in den Fjord, während der „Bridal Veil“ eine zarte, fast feenhafte Erscheinung hat, da das Wasser in feinen Fäden herabfällt. Diese Wasserfälle sind nicht nur ein Höhepunkt der Landschaft, sondern auch ein Symbol für die wilde, ungezähmte Natur Norwegens.</p>
-            <p>Neben seiner einzigartigen Natur ist Norwegen auch für seine kulinarischen Traditionen bekannt, die stark von der Natur und den frischen Zutaten geprägt sind. Besonders der Lachs spielt eine zentrale Rolle in der norwegischen Küche. Der norwegische Lachs, der in den klaren Gewässern des Landes aufgezogen wird, wird in vielen Variationen serviert: geräuchert, gebraten oder in traditionellen Gerichten wie „Laks med poteter“ (Lachs mit Kartoffeln). Diese einfachen, aber schmackhaften Gerichte spiegeln die Verbindung zur Natur wider, die in der norwegischen Kultur tief verwurzelt ist.</p>
-            <p>Doch auch Wildkräuter finden ihren Platz in der traditionellen Küche Norwegens. Kräuter wie Bärlauch, Schafgarbe und Gundermann wachsen in den unberührten Landschaften und werden in Saucen, Salaten oder als Beilage zu Fisch- und Fleischgerichten verwendet. Diese Wildkräuter verleihen den Gerichten nicht nur ein besonderes Aroma, sondern sind auch für ihre heilenden Eigenschaften bekannt.</p>
-            <p>Die Verbindung zwischen Norwegens natürlicher Schönheit und seiner kulinarischen Tradition ist untrennbar. Ein Besuch des Geirangerfjords und der Genuss von Lachs und Wildkräutern sind nur einige der vielen Erlebnisse, die das Land zu bieten hat. Sie spiegeln die Einfachheit und Frische wider, die Norwegen auszeichnen und die Besucher aus der ganzen Welt in ihren Bann ziehen.</p>
-    </div>
-
-    <button onclick="toggleText(this)" style="background-color: #4CAF50; color: white; padding: 6px 15px; font-size: 0.9rem; border: none; border-radius: 5px; cursor: pointer; position: absolute; bottom: 10px; left: 10px; margin-top: 20px;">Mehr lesen</button>
-</div>
-
-    
-<script>
-    function toggleText(button) {
-        var moreText = button.previousElementSibling;  // Das .more-text-Element vor dem Button
-        if (moreText.style.display === "none" || moreText.style.display === "") {
-            moreText.style.display = "block";
-            button.textContent = "Weniger lesen";
-        } else {
-            moreText.style.display = "none";
-            button.textContent = "Mehr lesen";
-        }
-    }
-</script>
-
-    
 
     <footer>
         &copy; 2025 Reiseabenteuer
