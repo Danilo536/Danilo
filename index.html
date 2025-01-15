@@ -51,61 +51,46 @@
             font-size: 1.2rem;
         }
 
-        /* Mobile Dropdown */
-        .menu-toggle {
-            display: none;
-            cursor: pointer;
-            padding: 10px;
-            font-size: 1.2rem;
+        /* Dropdown Menü */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        .dropbtn {
             background-color: #4CAF50;
             color: white;
+            padding: 10px 20px;
+            font-size: 1.2rem;
             border: none;
-            width: 100%;
+            cursor: pointer;
         }
 
-        nav ul {
-            display: flex;
-            justify-content: center;
-        }
-
-        nav ul li {
-            display: inline;
-        }
-
-        .dropdown-menu {
+        .dropdown-content {
             display: none;
-            flex-direction: column;
-            width: 100%;
-            text-align: left;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 160px;
+            z-index: 1;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+            top: 100%;
+            left: 0;
         }
 
-        .dropdown-menu li {
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
             display: block;
-            padding: 10px;
         }
 
-        @media (max-width: 768px) {
-            .menu-toggle {
-                display: block;
-            }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
 
-            nav ul {
-                display: none;
-                width: 100%;
-            }
-
-            nav ul li {
-                width: 100%;
-                text-align: left;
-            }
-
-            .dropdown-menu {
-                display: flex;
-            }
-
-            nav.active ul {
-                display: flex;
-            }
+        .dropdown:hover .dropdown-content {
+            display: block;
         }
 
         /* Hero-Bereich */
@@ -180,16 +165,6 @@
             flex: 1;
         }
 
-        .features h2 {
-            color: #4CAF50;
-            margin-bottom: 15px;
-        }
-
-        .features p {
-            line-height: 1.6;
-            color: #555;
-        }
-
         /* Footer */
         footer {
             text-align: center;
@@ -198,16 +173,51 @@
             padding: 1rem;
             margin-top: auto; /* Verhindert, dass der Footer die Seite überlappt */
         }
+
+        /* Responsive für kleine Bildschirme */
+        @media (max-width: 768px) {
+            nav ul {
+                padding: 0;
+            }
+
+            nav ul li {
+                display: block;
+                margin: 10px 0;
+            }
+
+            .hero-content h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
+            }
+
+            .hero {
+                height: 50vh;
+            }
+
+            .dropdown-content {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 <body>
     <header>
-        <button class="menu-toggle" onclick="toggleMenu()">Menü</button>
         <nav>
-            <ul class="dropdown-menu">
+            <ul>
                 <li><a href="index.html">Start</a></li>
                 <li><a href="berichte.html">Berichte</a></li>
                 <li><a href="galerie.html">Galerie</a></li>
+                <li class="dropdown">
+                    <a href="javascript:void(0)" class="dropbtn">Mehr</a>
+                    <div class="dropdown-content">
+                        <a href="#">Über mich</a>
+                        <a href="#">Kontakt</a>
+                        <a href="#">Blog</a>
+                    </div>
+                </li>
             </ul>
         </nav>
     </header>
@@ -239,11 +249,5 @@
     <footer>
         &copy; 2025 Reiseabenteuer
     </footer>
-
-    <script>
-        function toggleMenu() {
-            document.querySelector('nav').classList.toggle('active');
-        }
-    </script>
 </body>
 </html>
