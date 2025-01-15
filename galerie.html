@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galerie</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f9f9f9;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin: 30px auto;
+            max-width: 1000px;
+        }
+
+        .gallery img {
+            margin: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            cursor: pointer;
+        }
+
+        .gallery-section {
+            margin-bottom: 40px;
+        }
+
+        .gallery-section h2 {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* Overlay und Vollbild-Bild */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.8);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .overlay img {
+            max-width: 90%;
+            max-height: 90%;
+            object-fit: contain;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 30px;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Galerie</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Start</a></li>
+                <li><a href="berichte.html">Berichte</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="gallery-section">
+        <h2>Norwegen</h2>
+        <div class="gallery">
+            <img src="Geirangerfjord.jpg"Bergen in Norwegen" onclick="openModal('Geirangerfjord.jpg')">
+            <img src="Wasserfall.jpg" alt="Norwegische Fjorde" onclick="openModal('Wasserfall.jpg')">
+            <img src="Essen (traditionell).jpg" alt="Landschaft in Norwegen" onclick="openModal('Essen (traditionell).jpg')">
+        </div>
+    </div>
+
+    <div class="gallery-section">
+        <h2>Paris</h2>
+        <div class="gallery">
+            <img src="Montmarte.jpg" alt="Montmartre in Paris" onclick="openModal('Montmarte.jpg')">
+            <img src="Louvre.jpg" alt="Louvre in Paris" onclick="openModal('Louvre.jpg')">
+            <img src="Eiffelturm.jpg" alt="Eiffelturm in Paris" onclick="openModal('Eiffelturm.jpg')">
+        </div>
+    </div>
+
+    <!-- Overlay für Vollbildanzeige -->
+    <div id="modal" class="overlay">
+        <span class="close-btn" onclick="closeModal()">×</span>
+        <img id="modal-image" src="" alt="Vollbild">
+    </div>
+
+    <footer>
+        &copy; 2025 Meine Reise-Website
+    </footer>
+
+    <script>
+        // Funktion zum Öffnen des Bildes im Modal
+        function openModal(imageSrc) {
+            var modal = document.getElementById('modal');
+            var modalImage = document.getElementById('modal-image');
+            modal.style.display = 'flex'; // Overlay anzeigen
+            modalImage.src = imageSrc; // Bildquelle setzen
+        }
+
+        // Funktion zum Schließen des Modals
+        function closeModal() {
+            var modal = document.getElementById('modal');
+            modal.style.display = 'none'; // Overlay ausblenden
+        }
+
+        // Schließen des Modals mit der ESC-Taste
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
