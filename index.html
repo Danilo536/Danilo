@@ -3,106 +3,182 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wahrsagerei und Vorhersagen</title>
+    <title>Meine Reise-Abenteuer</title>
     <style>
+        /* Allgemeines Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            font-family: 'Arial', sans-serif;
+            height: 100%;
+            background: #f4f4f9;
+            color: #333;
+        }
+
         body {
-            font-family: 'Georgia', serif;
-            background: #2e2e2e;
-            color: #ffffff;
-            text-align: center;
-            padding: 20px;
-        }
-        .container {
-            background: #1e1e1e;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-            max-width: 800px;
-            margin: auto;
-        }
-        h1 {
-            color: #f1c40f;
-        }
-        .prediction {
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        header {
+            background: #4CAF50;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        /* Hero-Bereich */
+        .hero {
+            display: flex;
+            align-items: center;
             justify-content: center;
-            margin-top: 20px;
+            background: url('hero.jpg') no-repeat center center/cover;
+            height: calc(100vh - 80px); /* Passt sich an die Bildschirmhöhe an */
+            text-align: center;
+            position: relative;
+            flex-grow: 1;
         }
-        .prediction div {
-            margin: 10px;
-            padding: 20px;
-            background-color: #333;
-            border: 1px solid #555;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
         }
-        .prediction div:hover {
-            background-color: #444;
+
+        .hero-content {
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
         }
-        .hidden-message, .category-message {
-            display: none;
-            margin-top: 20px;
-            padding: 20px;
-            background-color: #444;
-            border: 1px solid #555;
-            border-radius: 10px;
+
+        .hero-content h1 {
+            font-size: 2.5rem;
+            color: #4CAF50;
+            margin-bottom: 15px;
         }
-        .footer {
-            margin-top: 20px;
-            font-size: 0.9em;
-            color: #bbb;
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .hero-content a {
+            background: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: background 0.3s;
+        }
+
+        .hero-content a:hover {
+            background: #45a049;
+        }
+
+        /* Features */
+        .features {
+            display: flex;
+            justify-content: center;
+            padding: 40px 20px;
+            background: #fff;
+            text-align: center;
+        }
+
+        .features .feature {
+            margin: 0 20px;
+            flex: 1;
+        }
+
+        .features h2 {
+            color: #4CAF50;
+            margin-bottom: 15px;
+        }
+
+        .features p {
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            background: #333;
+            color: white;
+            padding: 1rem;
+            margin-top: auto; /* Verhindert, dass der Footer die Seite überlappt */
         }
     </style>
-    <script>
-        function showMessage(type) {
-            const messages = document.querySelectorAll('.category-message, .hidden-message');
-            messages.forEach(message => message.style.display = 'none');
-            if (type === 'love') {
-                document.getElementById('hidden-message').style.display = 'block';
-            } else {
-                document.getElementById(type).style.display = 'block';
-            }
-        }
-    </script>
 </head>
 <body>
-    <div class="container">
-        <h1>Wahrsagerei und Vorhersagen</h1>
-        <p>Willkommen bei deiner täglichen Wahrsagerei! Klicke auf ein Ereignis, um deine persönliche Vorhersage zu sehen.</p>
-        <div class="prediction">
-            <div onclick="showMessage('career')">Karriere</div>
-            <div onclick="showMessage('health')">Gesundheit</div>
-            <div onclick="showMessage('travel')">Reise</div>
-            <div onclick="showMessage('love')">Liebe</div>
-        </div>
-        <div id="career" class="category-message">
-            <h2>Karriere Vorhersage:</h2>
-            <p>Du wirst bald eine bedeutende Gelegenheit erhalten, die deinen Karriereweg erheblich beeinflussen könnte. Nutze diese Chance, um dich weiterzuentwickeln und deine Ziele zu erreichen.</p>
-        </div>
-        <div id="health" class="category-message">
-            <h2>Gesundheit Vorhersage:</h2>
-            <p>Deine Gesundheit wird sich in naher Zukunft verbessern. Achte darauf, genügend Ruhe und eine ausgewogene Ernährung in deinen Alltag zu integrieren.</p>
-        </div>
-        <div id="travel" class="category-message">
-            <h2>Reise Vorhersage:</h2>
-            <p>Eine aufregende Reise steht dir bevor, die dir neue Perspektiven und wertvolle Erfahrungen bringen wird. Sei offen für das Unbekannte und genieße die Abenteuer.</p>
-        </div>
-        <div id="hidden-message" class="hidden-message">
-            <h2Eine besondere Botschaft:</h2>
-            <p>
-                Johanna!,<br><br>
-                In den letzten Wochen durfte ich dich noch näher kennenlernen und meine Gefühle für dich sind stärker geworden. Du bist jemand ganz Besonderes für mich. Ich verstehe, dass du jetzt in der Oberstufe bist und jede Menge Stress hast. Der neue Abschnitt in deinem Leben bringt viele Herausforderungen mit sich, und ich möchte dir sagen, dass ich immer für dich da bin, um dir Halt zu geben.
-            </p>
-            <p>
-                Vielleicht könnten wir uns in eine Art Zwischenebene zwischen Freundschaft und Beziehung begeben, da ich weiß, dass eine richtige Beziehung für dich momentan zu stressig ist. Egal wie stressig es wird, ich stehe an deiner Seite. Lass uns gemeinsam diesen Weg gehen, Schritt für Schritt.
-            </p>
-            <p class="footer">
-                In Liebe, oder Zwischenliebe :)<br>
-                Danilo
-            </p>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Start</a></li>
+                <li><a href="berichte.html">Berichte</a></li>
+                <li><a href="galerie.html">Galerie</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Willkommen bei meinen Reiseabenteuern</h1>
+            <p>Begleite mich auf meinen Entdeckungsreisen um die Welt – voller spannender Geschichten und inspirierender Momente.</p>
+            <a href="berichte.html">Erfahre mehr</a>
         </div>
     </div>
+
+    <div class="features">
+        <div class="feature">
+            <h2>Reiseberichte</h2>
+            <p>Entdecke meine detaillierten Reiseberichte, in denen ich Erlebnisse, Tipps und unvergessliche Abenteuer teile.</p>
+        </div>
+        <div class="feature">
+            <h2>Galerie</h2>
+            <p>Stöbere durch meine Galerie mit den schönsten Momenten aus aller Welt, festgehalten in atemberaubenden Bildern.</p>
+        </div>
+        <div class="feature">
+            <h2>Inspiration</h2>
+            <p>Hole dir Inspiration für deine eigene Reise, entdecke versteckte Orte und lerne neue Kulturen kennen.</p>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2025 Reiseabenteuer
+    </footer>
 </body>
 </html>
