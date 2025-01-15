@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meine Reise-Abenteuer</title>
     <style>
-        /* Allgemeines Styling */
         * {
             margin: 0;
             padding: 0;
@@ -17,19 +16,39 @@
             height: 100%;
             background: #f4f4f9;
             color: #333;
+            margin: 0;
+            padding: 0;
         }
 
         body {
             display: flex;
             flex-direction: column;
-            margin: 0;
         }
 
+        /* Header */
         header {
             background: #4CAF50;
             color: white;
-            padding: 1rem 0;
-            text-align: center;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Hamburger Icon */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 25px;
+        }
+
+        .hamburger div {
+            background-color: white;
+            height: 4px;
+            width: 100%;
         }
 
         /* Navigation */
@@ -37,11 +56,10 @@
             list-style: none;
             margin: 0;
             padding: 0;
-            text-align: center;
+            display: flex;
         }
 
         nav ul li {
-            display: inline;
             margin: 0 20px;
         }
 
@@ -54,7 +72,6 @@
         /* Dropdown Menü */
         .dropdown {
             position: relative;
-            display: inline-block;
         }
 
         .dropbtn {
@@ -71,7 +88,6 @@
             position: absolute;
             background-color: #f9f9f9;
             min-width: 160px;
-            z-index: 1;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             border-radius: 5px;
             top: 100%;
@@ -93,15 +109,16 @@
             display: block;
         }
 
-        /* Hero-Bereich */
+        /* Hero Section */
         .hero {
+            background: url('hero.jpg') no-repeat center center/cover;
+            height: calc(100vh - 80px);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: url('hero.jpg') no-repeat center center/cover;
-            height: calc(100vh - 80px); /* Passt sich an die Bildschirmhöhe an */
-            text-align: center;
             position: relative;
+            color: white;
+            text-align: center;
             flex-grow: 1;
         }
 
@@ -116,10 +133,9 @@
 
         .hero-content {
             z-index: 1;
-            background: rgba(255, 255, 255, 0.9);
-            padding: 30px 20px;
+            padding: 30px;
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             max-width: 600px;
             margin: 0 auto;
             text-align: center;
@@ -128,27 +144,20 @@
         .hero-content h1 {
             font-size: 2.5rem;
             color: #4CAF50;
-            margin-bottom: 15px;
         }
 
         .hero-content p {
             font-size: 1.2rem;
-            color: #333;
-            margin-bottom: 20px;
+            margin: 20px 0;
         }
 
         .hero-content a {
-            background: #4CAF50;
+            background-color: #4CAF50;
             color: white;
             padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
-            font-size: 1rem;
-            transition: background 0.3s;
-        }
-
-        .hero-content a:hover {
-            background: #45a049;
+            font-size: 1.2rem;
         }
 
         /* Features */
@@ -165,59 +174,70 @@
             flex: 1;
         }
 
-        /* Footer */
         footer {
             text-align: center;
             background: #333;
             color: white;
             padding: 1rem;
-            margin-top: auto; /* Verhindert, dass der Footer die Seite überlappt */
+            margin-top: auto;
         }
 
-        /* Responsive für kleine Bildschirme */
+        /* Mobile View */
         @media (max-width: 768px) {
             nav ul {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                text-align: left;
                 padding: 0;
             }
 
             nav ul li {
-                display: block;
                 margin: 10px 0;
             }
 
-            .hero-content h1 {
-                font-size: 1.8rem;
+            nav ul li a {
+                padding: 10px;
+                background-color: #4CAF50;
+                color: white;
+                text-align: left;
             }
 
-            .hero-content p {
-                font-size: 1rem;
+            .hamburger {
+                display: flex;
+            }
+
+            .menu-active {
+                display: block;
             }
 
             .hero {
                 height: 50vh;
             }
 
-            .dropdown-content {
-                width: 100%;
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .hero-content p {
+                font-size: 1rem;
             }
         }
+
     </style>
 </head>
 <body>
     <header>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
         <nav>
-            <ul>
+            <ul id="menu">
                 <li><a href="index.html">Start</a></li>
                 <li><a href="berichte.html">Berichte</a></li>
                 <li><a href="galerie.html">Galerie</a></li>
-                <li class="dropdown">
-                    <a href="javascript:void(0)" class="dropbtn">Mehr</a>
-                    <div class="dropdown-content">
-                        <a href="#">Über mich</a>
-                        <a href="#">Kontakt</a>
-                        <a href="#">Blog</a>
-                    </div>
-                </li>
             </ul>
         </nav>
     </header>
@@ -249,5 +269,12 @@
     <footer>
         &copy; 2025 Reiseabenteuer
     </footer>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu');
+            menu.classList.toggle('menu-active');
+        }
+    </script>
 </body>
 </html>
